@@ -1,0 +1,31 @@
+class Solution {
+    int ROWS = 0;
+    int COLS = 0;
+    public int maxAreaOfIsland(int[][] grid) {
+        ROWS = grid.length;
+        COLS = grid[0].length;
+        int res = 0;
+        for(int r = 0; r<ROWS; r++){
+            for(int c = 0; c< COLS; c++){
+                if(grid[r][c]==1){
+                    res = Math.max(res,dfs(r,c,grid));
+                }
+            }
+        }
+        return res;
+    }
+
+    int dfs(int r, int c, int[][] grid){
+        if(r<0 || r==ROWS || c <0 || c==COLS
+        || grid[r][c]==0){
+            return 0;
+        }
+        grid[r][c]=0;
+        return 1+
+        dfs(r+1,c,grid)+
+        dfs(r-1,c,grid)+
+        dfs(r,c+1,grid)+
+        dfs(r,c-1,grid);
+
+    }
+}
